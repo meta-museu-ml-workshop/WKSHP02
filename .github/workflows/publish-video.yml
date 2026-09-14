@@ -1,0 +1,32 @@
+name: Release Video
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        lfs: true
+        fetch-depth: 1
+
+    - name: Get SHA
+      id: vars
+      run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
+    - name: Release
+      uses: softprops/action-gh-release@v2
+      with:
+        name: "Release ${{ steps.vars.outputs.sha_short }}"
+        tag_name: "release-${{ steps.vars.outputs.sha_short }}"
+        files: ./Meta-Museu_WKSHP-02.mp4
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
