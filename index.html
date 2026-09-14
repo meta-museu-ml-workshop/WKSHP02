@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Video Player</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        height: 100vh;
+        padding: 32px 12px;
+      }
+      .video-container {
+        max-width: 800px;
+        width: 100%;
+      }
+      video {
+        width: 100%;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="video-container">
+      <video controls width="800" height="500">
+        <source
+          src="https://github.com/meta-museu-ml-workshop/WKSHP02/releases/latest/download/Meta-Museu_WKSHP-02.mp4"
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </body>
+</html>
